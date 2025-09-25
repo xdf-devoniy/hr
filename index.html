@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Form - Oxford</title>
+    <meta name="description" content="Oxford uchun ish arizasi shakli">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #002147; /* Oxford Blue */
+            --primary-dark: #001635;
+            --secondary: #e8f0f7;
+            --text: #333333;
+            --light-text: #666666;
+            --border: #e0e0e0;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f9f9f9;
+            padding: 0;
+            margin: 0;
+            text-align: left; /* LTR alignment */
+        }
+
+        .container {
+            max-width: 100%;
+            padding: 20px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white; /* White text for better contrast on Oxford blue */
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-container {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: #fafafa;
+            text-align: left; /* LTR alignment */
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(0, 33, 71, 0.3);
+            background-color: white;
+        }
+
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .file-input-container {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-input-button {
+            border: 1px dashed var(--border);
+            border-radius: var(--radius);
+            padding: 30px 20px;
+            text-align: center;
+            width: 100%;
+            cursor: pointer;
+            transition: var(--transition);
+            background-color: #fafafa;
+        }
+
+        .file-input-button:hover {
+            border-color: var(--primary);
+            background-color: #fff;
+        }
+
+        .file-input-button i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .file-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-name {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--light-text);
+            text-align: left; /* LTR alignment */
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .progress-container {
+            width: 100%;
+            background-color: #f0f0f0;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .progress-bar {
+            height: 8px;
+            border-radius: var(--radius);
+            background-color: var(--primary);
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin: 30px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary);
+            text-align: left; /* LTR alignment */
+            font-weight: 700;
+        }
+
+        .required-field::after {
+            content: " *";
+            color: red;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 700px;
+                padding: 30px;
+            }
+
+            header {
+                padding: 30px 0;
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            .form-container {
+                padding: 35px;
+            }
+
+            .btn {
+                width: auto;
+                display: block;
+                margin: 0 auto;
+                padding: 15px 50px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .form-group:nth-child(1) { animation-delay: 0.1s; }
+        .form-group:nth-child(2) { animation-delay: 0.2s; }
+        .form-group:nth-child(3) { animation-delay: 0.3s; }
+        .form-group:nth-child(4) { animation-delay: 0.4s; }
+        .form-group:nth-child(5) { animation-delay: 0.5s; }
+        .form-group:nth-child(6) { animation-delay: 0.6s; }
+        .form-group:nth-child(7) { animation-delay: 0.7s; }
+        .form-group:nth-child(8) { animation-delay: 0.8s; }
+        .form-group:nth-child(9) { animation-delay: 0.9s; }
+        .form-group:nth-child(10) { animation-delay: 1.0s; }
+        .form-group:nth-child(11) { animation-delay: 1.1s; }
+        .form-group:nth-child(12) { animation-delay: 1.2s; }
+        .form-group:nth-child(13) { animation-delay: 1.3s; }
+        .form-group:nth-child(14) { animation-delay: 1.4s; }
+        .form-group:nth-child(15) { animation-delay: 1.5s; }
+        .form-group:nth-child(16) { animation-delay: 1.6s; }
+        .form-group:nth-child(17) { animation-delay: 1.7s; }
+        .form-group:nth-child(18) { animation-delay: 1.8s; }
+        .form-group:nth-child(19) { animation-delay: 1.9s; }
+        .form-group:nth-child(20) { animation-delay: 2.0s; }
+        .form-group:nth-child(21) { animation-delay: 2.1s; }
+        .form-group:nth-child(22) { animation-delay: 2.2s; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1><i class="fas fa-graduation-cap"></i> Oxford Learning Centre</h1>
+        <p>Quyidagi savollarga javob bering. Barcha ma'lumotlaringiz maxfiy saqlanadi.</p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="progress-container" id="progressContainer">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <form id="hrForm" action="submit.php" method="post" enctype="multipart/form-data" class="form-container">
+        <h3 class="section-title">Asosiy ma'lumotlar</h3>
+
+        <div class="form-group">
+            <label for="full_name" class="required-field">1) Ism sharifingiz</label>
+            <input type="text" id="full_name" name="full_name" class="form-control" required placeholder="To'liq ism va familiyangiz">
+        </div>
+
+        <div class="form-group">
+            <label for="phone" class="required-field">2) Telefon raqamingiz</label>
+            <input type="tel" id="phone" name="phone" class="form-control" required placeholder="+998 XX XXX XX XX">
+        </div>
+
+        <div class="form-group">
+            <label for="birthdate" class="required-field">3) Tug'ilgan kuningiz</label>
+            <input type="date" id="birthdate" name="birthdate" class="form-control" required>
+        </div>
+
+        <h3 class="section-title">Ish tartibi</h3>
+
+        <div class="form-group">
+            <label for="time135" class="required-field">4) 1-3-5 kunlari bo'sh vaqtlar</label>
+            <input type="text" id="time135" name="time135" class="form-control" required placeholder="Masalan: 08:00 - 12:00">
+        </div>
+
+        <div class="form-group">
+            <label for="time246" class="required-field">5) 2-4-6 kunlari bo'sh vaqtlar</label>
+            <input type="text" id="time246" name="time246" class="form-control" required placeholder="Masalan: 14:00 - 18:00">
+        </div>
+
+        <div class="form-group">
+            <label for="duration" class="required-field">6) Biz bilan qancha muddat ishlamoqchisiz?</label>
+            <input type="text" id="duration" name="duration" class="form-control" required placeholder="Masalan: 1 yil">
+        </div>
+
+        <h3 class="section-title">Kasbiy ma'lumotlar</h3>
+
+        <div class="form-group">
+            <label for="levels" class="required-field">7) Qaysi darajadagi o'quvchilar</label>
+            <input type="text" id="levels" name="levels" class="form-control" required placeholder="Masalan: Boshlang'ich, o'rta yoki yuqori">
+        </div>
+
+        <div class="form-group">
+            <label for="russian" class="required-field">8) Rus tilida dars bera olasizmi?</label>
+            <select id="russian" name="russian" class="form-control" required>
+                <option value="" selected disabled>Tanlang</option>
+                <option value="Ha">Ha</option>
+                <option value="Yo'q">Yo'q</option>
+                <option value="Qisman">Qisman</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="second_job" class="required-field">9) Ikkinchi ishingiz haqida</label>
+            <textarea id="second_job" name="second_job" class="form-control" required placeholder="Ikkinchi ishingiz bo'lsa, qisqacha tavsiflang"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="experience" class="required-field">10) Tajribangiz haqida</label>
+            <textarea id="experience" name="experience" class="form-control" required placeholder="O'qituvchilik tajribangiz haqida"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="students_taught" class="required-field">11) Qancha o'quvchiga dars bergansiz</label>
+            <input type="text" id="students_taught" name="students_taught" class="form-control" required placeholder="Taxminiy son">
+        </div>
+
+        <div class="form-group">
+            <label for="education" class="required-field">12) Qaysi bilim dargohlarini tugatgansiz</label>
+            <input type="text" id="education" name="education" class="form-control" required placeholder="O'qigan oliy yoki o'rta maxsus bilim yurtlaringiz">
+        </div>
+
+        <div class="form-group">
+            <label for="ielts_trainer" class="required-field">13) O'zingiz kimda tayyorlangansiz?</label>
+            <input type="text" id="ielts_trainer" name="ielts_trainer" class="form-control" required placeholder="sizni o'qitgan ustozingizni ismi">
+        </div>
+
+        <h3 class="section-title">Shaxsiy fazilatlar</h3>
+
+        <div class="form-group">
+            <label for="strengths" class="required-field">14) Ustun tomoningiz</label>
+            <textarea id="strengths" name="strengths" class="form-control" required placeholder="Sizning kuchli tomonlaringiz"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="strategy" class="required-field">15) O'quvchi tezroq o'rganishi uchun nima qilasiz?</label>
+            <textarea id="strategy" name="strategy" class="form-control" required placeholder="O'quvchilarga yordam berish metodlaringiz"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="goals" class="required-field">16) 3 yillikdagi 3 ta maqsadingiz</label>
+            <textarea id="goals" name="goals" class="form-control" required placeholder="Kelajakdagi maqsadlaringiz"></textarea>
+        </div>
+
+        <h3 class="section-title">Oila a'zolari haqida</h3>
+
+        <div class="form-group">
+            <label for="father" class="required-field">17) Otangiz haqida</label>
+            <textarea id="father" name="father" class="form-control" required placeholder="Otangizning ismi, yoshi va kasbi"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="mother" class="required-field">18) Onangiz haqida</label>
+            <textarea id="mother" name="mother" class="form-control" required placeholder="Onangizning ismi, yoshi va kasbi"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="partner" class="required-field">19) Turmush o'rtog'ingiz haqida</label>
+            <textarea id="partner" name="partner" class="form-control" required placeholder="Agar turmush qurgan bo'lsangiz"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="relatives" class="required-field">20) Boshqa oila a'zolaringiz haqida</label>
+            <textarea id="relatives" name="relatives" class="form-control" required placeholder="Qolgan oila a'zolaringiz haqida"></textarea>
+        </div>
+
+        <h3 class="section-title">Yuklashlar</h3>
+
+        <div class="form-group">
+            <label for="ielts_cert" class="required-field">21) Fan sertifikatingiz rasmi</label>
+            <div class="file-input-container">
+                <div class="file-input-button">
+                    <i class="fas fa-file-upload"></i>
+                    <span>Faylni yuklash uchun bosing</span>
+                    <span class="file-format">(JPG, PNG yoki PDF)</span>
+                </div>
+                <input type="file" id="ielts_cert" name="ielts_cert" class="file-input" accept="image/*,application/pdf" required>
+            </div>
+            <div class="file-name" id="ieltsFileName">Fayl tanlanmadi</div>
+        </div>
+
+        <div class="form-group">
+            <label for="photo" class="required-field">22) O'zingizning rasmingiz</label>
+            <div class="file-input-container">
+                <div class="file-input-button">
+                    <i class="fas fa-camera"></i>
+                    <span>Rasm yuklash uchun bosing</span>
+                    <span class="file-format">(JPG yoki PNG)</span>
+                </div>
+                <input type="file" id="photo" name="photo" class="file-input" accept="image/*" required>
+            </div>
+            <div class="file-name" id="photoFileName">Fayl tanlanmadi</div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn">
+                <i class="fas fa-paper-plane"></i> Arizani yuborish
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // File input handlers
+    document.getElementById('ielts_cert').addEventListener('change', function(e) {
+        const fileName = e.target.files[0] ? e.target.files[0].name : 'Fayl tanlanmadi';
+        document.getElementById('ieltsFileName').textContent = fileName;
+    });
+
+    document.getElementById('photo').addEventListener('change', function(e) {
+        const fileName = e.target.files[0] ? e.target.files[0].name : 'Fayl tanlanmadi';
+        document.getElementById('photoFileName').textContent = fileName;
+    });
+
+    // Form submission with progress bar and popup
+    document.getElementById('hrForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent default submission
+
+        const progressContainer = document.getElementById('progressContainer');
+        const progressBar = document.getElementById('progressBar');
+        const form = this;
+
+        progressContainer.style.display = 'block';
+
+        // Show progress
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += 10;
+            progressBar.style.width = progress + '%';
+
+            if (progress >= 100) {
+                clearInterval(interval);
+                
+                // Submit form via fetch
+                const formData = new FormData(form);
+                fetch('submit.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(data => {
+                    // Hide progress bar
+                    progressContainer.style.display = 'none';
+                    
+                    // Show success popup
+                    showSuccessPopup();
+                })
+                .catch(error => {
+                    // Hide progress bar
+                    progressContainer.style.display = 'none';
+                    
+                    // Show error message
+                    alert('Xatolik yuz berdi. Iltimos, qayta urinib ko\'ring.');
+                    console.error('Error:', error);
+                });
+            }
+        }, 50);
+    });
+
+    // Success popup function
+    function showSuccessPopup() {
+        // Create modal overlay
+        const overlay = document.createElement('div');
+        overlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        `;
+
+        // Create modal content
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            animation: slideIn 0.3s ease;
+        `;
+
+        modal.innerHTML = `
+            <div style="color: #28a745; font-size: 4rem; margin-bottom: 20px;">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 style="color: var(--primary); margin-bottom: 15px; font-size: 1.5rem;">
+                Muvaffaqiyatli yuborildi!
+            </h2>
+            <p style="color: var(--light-text); margin-bottom: 30px; line-height: 1.6;">
+                Sizning ma'lumotlaringiz muvaffaqiyatli yuborildi. Tez orada siz bilan bog'lanamiz.
+            </p>
+            <button id="okButton" style="
+                background-color: var(--primary);
+                color: white;
+                border: none;
+                padding: 12px 30px;
+                font-size: 1rem;
+                border-radius: 6px;
+                cursor: pointer;
+                font-weight: 600;
+                transition: background-color 0.3s ease;
+            ">
+                OK
+            </button>
+        `;
+
+        // Add animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            @keyframes slideIn {
+                from { 
+                    opacity: 0; 
+                    transform: translateY(-50px) scale(0.9); 
+                }
+                to { 
+                    opacity: 1; 
+                    transform: translateY(0) scale(1); 
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add hover effect to button
+        const okButton = modal.querySelector('#okButton');
+        okButton.addEventListener('mouseenter', () => {
+            okButton.style.backgroundColor = 'var(--primary-dark)';
+        });
+        okButton.addEventListener('mouseleave', () => {
+            okButton.style.backgroundColor = 'var(--primary)';
+        });
+
+        // Handle OK button click
+        okButton.addEventListener('click', () => {
+            // Redirect to Instagram
+            window.open('https://www.instagram.com/oxfordlc.uz', '_blank');
+            
+            // Remove modal
+            document.body.removeChild(overlay);
+            
+            // Reset form
+            document.getElementById('hrForm').reset();
+            document.getElementById('ieltsFileName').textContent = 'Fayl tanlanmadi';
+            document.getElementById('photoFileName').textContent = 'Fayl tanlanmadi';
+        });
+
+        // Close modal when clicking overlay
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                window.open('https://www.instagram.com/oxfordlc.uz', '_blank');
+                document.body.removeChild(overlay);
+                document.getElementById('hrForm').reset();
+                document.getElementById('ieltsFileName').textContent = 'Fayl tanlanmadi';
+                document.getElementById('photoFileName').textContent = 'Fayl tanlanmadi';
+            }
+        });
+
+        // Add to page
+        overlay.appendChild(modal);
+        document.body.appendChild(overlay);
+    }
+
+    // Scroll to invalid fields on submit
+    document.getElementById('hrForm').addEventListener('invalid', function(e) {
+        e.preventDefault();
+        e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        e.target.focus();
+    }, true);
+</script>
+</body>
+</html>
