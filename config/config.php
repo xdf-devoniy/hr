@@ -55,6 +55,39 @@ function asset_url(string $path): string
     return url_for($path);
 }
 
+function currency_symbol(string $currency): string
+{
+    $map = [
+        'USD' => '$',
+        'EUR' => '€',
+        'GBP' => '£',
+        'CAD' => 'C$',
+        'AUD' => 'A$',
+        'JPY' => '¥',
+        'INR' => '₹',
+        'SUM' => "so'm",
+    ];
+
+    $currency = strtoupper($currency);
+
+    return $map[$currency] ?? $currency . ' ';
+}
+
+function format_currency(float $amount, string $currency, ?int $precision = null): string
+{
+    $currency = strtoupper($currency);
+    $precision = $precision ?? ($currency === 'JPY' ? 0 : 2);
+    $isNegative = $amount < 0;
+    $absolute = abs($amount);
+    $formatted = number_format($absolute, $precision);
+    $symbol = currency_symbol($currency);
+
+    $positionAfter = in_array($currency, ['INR', 'SUM'], true);
+    $value = $positionAfter ? $formatted . ' ' . $symbol : $symbol . $formatted;
+
+    return $isNegative ? '-' . $value : $value;
+}
+
 function redirect(string $path): void
 {
     if (!preg_match('/^https?:\/\//i', $path)) {
