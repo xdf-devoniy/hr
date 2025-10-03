@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'interest_rate' => $_POST['interest_rate'] ?? 0
         ]);
     }
-    redirect('/public/accounts.php');
+    redirect('public/accounts.php');
 }
 $accounts = get_accounts($user['id']);
 include __DIR__ . '/../includes/header.php';

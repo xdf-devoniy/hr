@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'description' => $_POST['description'] ?? null
         ]);
     }
-    redirect('/public/recurring.php');
+    redirect('public/recurring.php');
 }
 $recurring = get_recurring_transactions($user['id']);
 include __DIR__ . '/../includes/header.php';

@@ -20,8 +20,47 @@ function base_path(string $path = ''): string
     return rtrim(dirname(__DIR__), '/') . ($path ? '/' . ltrim($path, '/') : '');
 }
 
+function detect_base_url(): string
+{
+    $configured = getenv('APP_BASE_URL');
+    if ($configured !== false && $configured !== '') {
+        return rtrim($configured, '/');
+    }
+
+    $scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
+    $publicSegment = '/public/';
+    $position = strpos($scriptName, $publicSegment);
+
+    if ($position !== false) {
+        $base = substr($scriptName, 0, $position);
+        return rtrim($base, '/');
+    }
+
+    return '';
+}
+
+define('APP_BASE_URL', detect_base_url());
+
+function url_for(string $path = ''): string
+{
+    $base = APP_BASE_URL;
+    $normalized = ltrim($path, '/');
+    $suffix = $normalized !== '' ? '/' . $normalized : '';
+
+    return ($base !== '' ? $base : '') . $suffix;
+}
+
+function asset_url(string $path): string
+{
+    return url_for($path);
+}
+
 function redirect(string $path): void
 {
+    if (!preg_match('/^https?:\/\//i', $path)) {
+        $path = url_for($path);
+    }
+
     header('Location: ' . $path);
     exit;
 }

@@ -19,7 +19,7 @@ function current_user(): ?array
 function require_auth(): void
 {
     if (!current_user()) {
-        redirect('/public/login.php');
+        redirect('public/login.php');
     }
 }
 
@@ -72,5 +72,5 @@ function register_user(array $data): array
 function logout(): void
 {
     session_destroy();
-    redirect('/public/login.php');
+    redirect('public/login.php');
 }

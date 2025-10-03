@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'notes' => $_POST['notes'] ?? null
         ]);
     }
-    redirect('/public/budgets.php');
+    redirect('public/budgets.php');
 }
 $budgets = get_budgets($user['id']);
 $transactions = get_transactions($user['id'], ['start_date' => date('Y-m-01'), 'end_date' => date('Y-m-t')]);
