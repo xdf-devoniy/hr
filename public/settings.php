@@ -41,7 +41,7 @@ include __DIR__ . '/../includes/header.php';
                     <div class="mb-3">
                         <label class="form-label">Currency</label>
                         <select name="currency" class="form-select" required>
-                            <?php foreach (['USD','EUR','GBP','CAD','AUD','JPY','INR'] as $currency): ?>
+                            <?php foreach (['USD','EUR','GBP','CAD','AUD','JPY','INR','SUM'] as $currency): ?>
                             <option value="<?= $currency; ?>" <?= $settings['currency'] === $currency ? 'selected' : ''; ?>><?= $currency; ?></option>
                             <?php endforeach; ?>
                         </select>

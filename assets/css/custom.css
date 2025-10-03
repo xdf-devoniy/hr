@@ -1,9 +1,172 @@
 body {
-    background-color: #f8f9fa;
+    background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 30%, #f1f5f9 100%);
+    font-family: 'Inter', sans-serif;
+    color: #1f2937;
+}
+
+main.container {
+    max-width: 1200px;
+}
+
+.navbar {
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.report-hero {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(147, 51, 234, 0.85));
+    border-radius: 1.75rem;
+    padding: 2.5rem;
+    box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.35);
+}
+
+.report-filter .form-control {
+    min-width: 180px;
+    background-color: rgba(255, 255, 255, 0.12);
+    border: none;
+    color: #fff;
+}
+
+.report-filter .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.report-filter .form-control::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.report-filter .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 0.15rem rgba(255, 255, 255, 0.35);
+    color: #fff;
+}
+
+.report-filter .btn {
+    border-radius: 999px;
+    padding-inline: 1.5rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+}
+
+.card-modern {
+    border-radius: 1.25rem;
+    border: none;
+    background: #fff;
+}
+
+.kpi-card {
+    background: linear-gradient(145deg, #ffffff, #f8fafc);
+}
+
+.kpi-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: #94a3b8;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.kpi-value {
+    font-weight: 700;
+}
+
+.kpi-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    font-size: 1.35rem;
+    box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.15);
+}
+
+.table-modern thead th {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: #94a3b8;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.table-modern tbody tr:not(:last-child) td {
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.table-modern tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.badge-soft-success {
+    color: #0f766e;
+    background-color: rgba(16, 185, 129, 0.12);
+}
+
+.badge-soft-danger {
+    color: #b91c1c;
+    background-color: rgba(248, 113, 113, 0.15);
+}
+
+.badge-soft-primary {
+    color: #1d4ed8;
+    background-color: rgba(59, 130, 246, 0.12);
+}
+
+.badge-soft-success,
+.badge-soft-danger,
+.badge-soft-primary {
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.category-dot {
+    display: inline-block;
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 999px;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+.progress-thin {
+    height: 0.35rem;
+    background-color: #e2e8f0;
+}
+
+.progress-thin .progress-bar {
+    border-radius: 999px;
+}
+
+.report-chart-wrapper {
+    position: relative;
+    height: 280px;
+}
+
+@media (max-width: 767.98px) {
+    .report-hero {
+        padding: 2rem;
+    }
+
+    .report-chart-wrapper {
+        height: 230px;
+    }
+}
+
+.list-group-modern .list-group-item {
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+}
+
+.list-group-modern .list-group-item + .list-group-item {
+    border-top: 1px solid #e2e8f0;
 }
 
 .card-kpi {
     border-left: 5px solid #0d6efd;
+    border-radius: 1.25rem;
 }
 
 .table-actions {
@@ -11,5 +174,16 @@ body {
 }
 
 .progress-goal {
-    height: 20px;
+    height: 0.75rem;
+    background-color: #e2e8f0;
+    border-radius: 999px;
+}
+
+.progress-goal .progress-bar {
+    border-radius: 999px;
+}
+
+footer {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(10px);
 }

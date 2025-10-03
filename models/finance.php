@@ -9,6 +9,21 @@ function get_categories(int $user_id): array
     return $stmt->fetchAll();
 }
 
+function get_user_settings(int $user_id): array
+{
+    global $pdo;
+    $stmt = $pdo->prepare('SELECT * FROM settings WHERE user_id = ?');
+    $stmt->execute([$user_id]);
+    $settings = $stmt->fetch();
+
+    return $settings ?: [
+        'currency' => 'USD',
+        'locale' => 'en_US',
+        'notifications' => 1,
+        'dark_mode' => 0,
+    ];
+}
+
 function save_category(array $data): void
 {
     global $pdo;
