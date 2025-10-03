@@ -44,7 +44,9 @@ sql/             Database schema
    ```
 4. Configure database credentials by setting environment variables `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS` or editing `config/config.php`.
 5. Point your web server document root to the `public` directory.
-6. Visit `/public/register.php` to create your first account.
+6. If the project is served from a subdirectory (for example `http://localhost/bdgt/public/index.php`), set the `APP_BASE_URL`
+   environment variable or ensure your server exposes the correct path so links resolve properly.
+7. Visit `http://localhost/bdgt/public/register.php` (adjusting the host/path as needed) to create your first account.
 
 ## CSV Import Format
 

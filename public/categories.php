@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'color' => $_POST['color'] ?? '#0d6efd'
         ]);
     }
-    redirect('/public/categories.php');
+    redirect('public/categories.php');
 }
 $categories = get_categories($user['id']);
 include __DIR__ . '/../includes/header.php';

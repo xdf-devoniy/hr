@@ -1,14 +1,14 @@
 <?php
 require_once __DIR__ . '/../includes/auth.php';
 if (current_user()) {
-    redirect('/public/index.php');
+    redirect('public/index.php');
 }
 $errors = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = register_user($_POST);
     if (!$errors) {
         if (login($_POST['email'], $_POST['password'])) {
-            redirect('/public/index.php');
+            redirect('public/index.php');
         }
     }
 }
@@ -47,7 +47,7 @@ include __DIR__ . '/../includes/header.php';
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Register</button>
                 </form>
-                <p class="mt-3 mb-0">Already have an account? <a href="/public/login.php">Login</a></p>
+                <p class="mt-3 mb-0">Already have an account? <a href="<?= url_for('public/login.php'); ?>">Login</a></p>
             </div>
         </div>
     </div>

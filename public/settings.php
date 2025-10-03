@@ -80,7 +80,7 @@ include __DIR__ . '/../includes/header.php';
             <div class="card-header">Data Management</div>
             <div class="card-body">
                 <p class="text-muted">Export your transactions as CSV for backup or analysis.</p>
-                <form method="post" action="/public/tools/export.php">
+                <form method="post" action="<?= url_for('public/tools/export.php'); ?>">
                     <button class="btn btn-outline-primary w-100">Export Transactions</button>
                 </form>
             </div>

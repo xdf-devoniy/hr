@@ -16,7 +16,7 @@ $filters = [
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action']) && $_POST['action'] === 'delete') {
         delete_transaction((int) $_POST['id'], $user['id']);
-        redirect('/public/transactions.php');
+        redirect('public/transactions.php');
     } elseif (isset($_POST['action']) && $_POST['action'] === 'import') {
         if (!empty($_FILES['transactions_csv']['tmp_name'])) {
             $rows = array_map('str_getcsv', file($_FILES['transactions_csv']['tmp_name']));
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'merchant' => $_POST['merchant'] ?? null,
             'notes' => $_POST['notes'] ?? null
         ]);
-        redirect('/public/transactions.php');
+        redirect('public/transactions.php');
     }
 }
 $transactions = get_transactions($user['id'], array_filter($filters));
@@ -83,7 +83,7 @@ include __DIR__ . '/../includes/header.php';
             </div>
             <div class="col-sm-12 d-flex gap-2">
                 <button class="btn btn-outline-primary">Filter</button>
-                <a href="/public/transactions.php" class="btn btn-outline-secondary">Reset</a>
+                <a href="<?= url_for('public/transactions.php'); ?>" class="btn btn-outline-secondary">Reset</a>
             </div>
         </form>
     </div>
@@ -108,7 +108,7 @@ include __DIR__ . '/../includes/header.php';
             <input type="file" name="transactions_csv" id="transactionImport" class="d-none" accept=".csv">
             <label for="transactionImport" class="btn btn-outline-secondary btn-sm mb-0">Import CSV</label>
             <button type="submit" class="btn btn-outline-primary btn-sm">Upload</button>
-            <a href="/samples/transactions_template.csv" class="btn btn-outline-success btn-sm">Template</a>
+            <a href="<?= url_for('samples/transactions_template.csv'); ?>" class="btn btn-outline-success btn-sm">Template</a>
         </form>
     </div>
     <div class="card-body p-0">

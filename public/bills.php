@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'notes' => $_POST['notes'] ?? null
         ]);
     }
-    redirect('/public/bills.php');
+    redirect('public/bills.php');
 }
 $bills = get_bills($user['id']);
 include __DIR__ . '/../includes/header.php';

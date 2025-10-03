@@ -113,7 +113,7 @@ include __DIR__ . '/../includes/header.php';
 <div class="card shadow-sm">
     <div class="card-header d-flex justify-content-between align-items-center">
         <span>Detailed Transactions</span>
-        <a href="/public/transactions.php" class="btn btn-sm btn-outline-primary">Manage</a>
+        <a href="<?= url_for('public/transactions.php'); ?>" class="btn btn-sm btn-outline-primary">Manage</a>
     </div>
     <div class="card-body p-0">
         <div class="table-responsive">

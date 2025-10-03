@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'notes' => $_POST['notes'] ?? null
         ]);
     }
-    redirect('/public/goals.php');
+    redirect('public/goals.php');
 }
 $goals = get_goals($user['id']);
 include __DIR__ . '/../includes/header.php';
