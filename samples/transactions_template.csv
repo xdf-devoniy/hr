@@ -1,0 +1,4 @@
+Date,Amount,Type,Category,Account,Merchant,Notes
+2024-01-01,2500.00,income,Salary,Checking,Acme Corp,Monthly paycheck
+2024-01-03,120.45,expense,Groceries,Checking,Farmers Market,Weekly groceries
+2024-01-05,75.00,expense,Utilities,Checking,City Power,Electric bill
